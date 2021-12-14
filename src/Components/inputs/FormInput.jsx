@@ -1,6 +1,9 @@
 import React from 'react';
+import AppContext from '../../ContextAPI/AppContext';
 
 const FormInput = function () {
+  const { setUrl } =  React.useContext(AppContext);
+
   const [params, setParams] = React.useState({
     title: '',
     backgColor: '',
@@ -27,7 +30,7 @@ const FormInput = function () {
       <label for="titleColor">Cor do título</label>
       <input type="text" name="titleColor" id="titleColor" />
 
-      <button type="button">Criar ícone</button>
+      <button type="button" onClick={() => setUrl(params)}>Criar ícone</button>
     </form>
   );
 };
