@@ -2,18 +2,18 @@ import React from 'react';
 import AppContext from '../../ContextAPI/AppContext';
 
 const FormInput = function () {
-  const { setUrl } =  React.useContext(AppContext);
+  const { setParams } =  React.useContext(AppContext);
 
-  const [params, setParams] = React.useState({
+  const [inputParams, setInputParams] = React.useState({
     title: '',
     backgColor: '',
     icon: '',
-    titleColor: '',
+    logoColor: '',
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setParams({ ...params, [name]: value });
+    setInputParams({ ...inputParams, [name]: value });
   };
 
   return (
@@ -27,10 +27,10 @@ const FormInput = function () {
       <label for="icon">Ícone</label>
       <input type="text" name="icon" id="icon" />
 
-      <label for="titleColor">Cor do título</label>
-      <input type="text" name="titleColor" id="titleColor" />
+      <label for="logoColor">Cor da logo</label>
+      <input type="text" name="logoColor" id="logoColor" />
 
-      <button type="button" onClick={() => setUrl(params)}>Criar ícone</button>
+      <button type="button" onClick={() => setParams(inputParams)}>Criar ícone</button>
     </form>
   );
 };

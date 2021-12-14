@@ -1,6 +1,9 @@
 import React from 'react'
+import AppContext from '../ContextAPI/AppContext';
 
 function Preview() {
+  const { params } = React.useContext(AppContext);
+  // console.log({ params }); os params chegam por aqui
   return (
     <div className='iconPreview'>
       <div className='iconPreview__container'>

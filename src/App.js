@@ -4,13 +4,10 @@ import Main from './Components/Main';
 import AppContext from './ContextAPI/AppContext';
 
 const App = function () {
-
-  const [url, setUrl] = React.useState('');
-
-  console.log(url);
+  const [params, setParams] = React.useState({});
 
   const context = {
-    url, setUrl
+    params, setParams
   }
 
   return <div className="App">
