@@ -1,5 +1,6 @@
 const generateLink = (params) => {
-  const URL = `https://img.shields.io/badge/${title}-${titleColor}?style=for-the-badge&logo=${logo}&logoColor=${logoColor}`;
+  const { title, backgColor, icon, logoColor } = params
+  const URL = `https://img.shields.io/badge/${title}-${backgColor}?style=for-the-badge&logo=${icon}&logoColor=${logoColor}`;
   return URL;
 };
 

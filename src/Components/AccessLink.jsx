@@ -1,9 +1,23 @@
-import React from 'react'
+import React from 'react';
+import AppContext from '../ContextAPI/AppContext';
+import generateLink from '../Utils/generateLink';
 
 function AccessLink() {
+  const { params, firstTime } = React.useContext(AppContext);
+  const readyURL = generateLink(params);
+
+  const message = <p>Ícone ainda não gerado</p>;
+  const link = <a
+  target="_blank"
+  href={readyURL}
+  rel="noreferrer"
+  >
+    {`Acessar ícone de ${params.title}`}
+  </a>
+
   return (
     <div className='accessLink'>
-      <a target="_blank" href="https://www.google.com.br/" rel="noreferrer">Acessar ícone</a>
+      { firstTime ? message : link }
     </div>
   )
 }

@@ -5,9 +5,11 @@ import AppContext from './ContextAPI/AppContext';
 
 const App = function () {
   const [params, setParams] = React.useState({});
+  const [firstTime, setFirstTime] = React.useState(true);
 
   const context = {
-    params, setParams
+    params, setParams,
+    firstTime, setFirstTime,
   }
 
   return <div className="App">
