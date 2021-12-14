@@ -1,29 +1,34 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
 
 const FormInput = function () {
+  const [params, setParams] = React.useState({
+    title: '',
+    backgColor: '',
+    icon: '',
+    titleColor: '',
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setParams({ ...params, [name]: value });
+  };
+
   return (
-    <Form>
-      <Form.Group className="mb-2" controlId="formBasicText">
-        <Form.Label>Nomeie o ícone</Form.Label>
-        <Form.Control type="text" placeholder="Digite o conteúdo do ícone" />
-      </Form.Group>
-      <Form.Group className="mb-2" controlId="formBasicText">
-        <Form.Label>Digite o nome da ferramenta</Form.Label>
-        <Form.Control type="text" placeholder="Digite o nome da ferramenta ou tecnologia" />
-      </Form.Group>
-      <Form.Group className="mb-2" controlId="formBasicText">
-        <Form.Label>Cor em hexadecimal da fonte</Form.Label>
-        <Form.Control type="color" />
-      </Form.Group>
-      <Form.Group className="mb-2" controlId="formBasicText">
-        <Form.Label>Cor de fundo</Form.Label>
-        <Form.Control type="color" placeholder="Digite o nome da ferramenta ou tecnologia" />
-      </Form.Group>
-      <Button variant="primary" type="button">
-        Gerar ícone
-      </Button>
-    </Form>
+    <form onChange={ (e) => handleChange(e)}>
+      <label for="title">Título</label>
+      <input type="text" name="title" id="title" />
+
+      <label for="backgColor">Cor de fundo</label>
+      <input type="text" name="backgColor" id="backgColor" />
+
+      <label for="icon">Ícone</label>
+      <input type="text" name="icon" id="icon" />
+
+      <label for="titleColor">Cor do título</label>
+      <input type="text" name="titleColor" id="titleColor" />
+
+      <button type="button">Criar ícone</button>
+    </form>
   );
 };
 
