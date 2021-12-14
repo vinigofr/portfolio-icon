@@ -7,6 +7,8 @@ const App = function () {
 
   const [url, setUrl] = React.useState('');
 
+  console.log(url);
+
   const context = {
     url, setUrl
   }
