@@ -1,0 +1,42 @@
+.formInput {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+}
+
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputTitle {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin-top: 5px;  
+}
+
+.input {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background: #f1f1f1;
+  transition: all 0.3s ease-in-out;
+}
+
+.input:focus {
+  outline: none;
+  background: rgb(177, 176, 176);
+  color: black;
+}
+
+.input:hover {
+  background: rgb(177, 176, 176);
+  color: black;
+}
