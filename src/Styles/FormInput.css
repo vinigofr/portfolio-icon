@@ -5,18 +5,25 @@
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
-  transition: all 0.3s ease-in-out;
 }
 
 .inputLabel {
   display: flex;
   flex-direction: column;
+  padding: 5px;
+}
+
+.inputLabel:hover {
+  transition: 0.5s;
+  border-radius: 5px;
 }
 
 .inputTitle {
+  text-align: left;
   font-size: 0.8rem;
-  color: #ccc;
+  color: rgb(53, 53, 53);
   margin-top: 5px;  
+  margin-left: 10%;
 }
 
 .input {
