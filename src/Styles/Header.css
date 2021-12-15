@@ -1,0 +1,9 @@
+.mainTitle:hover {
+  transform: rotate(1deg) scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.mainTitle:not(:hover) {
+  /* transform: rotate(deg) scale(1); */
+  transition: all 0.3s ease-in-out;
+}
