@@ -5,6 +5,8 @@
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
+  max-width: 500px;
+  margin: auto;
 }
 
 .inputLabel {
@@ -35,6 +37,8 @@
   border-radius: 5px;
   background: #f1f1f1;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+
 }
 
 .input:focus {
@@ -46,4 +50,6 @@
 .input:hover {
   background: rgb(177, 176, 176);
   color: black;
+  /* shadow inside input */
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }

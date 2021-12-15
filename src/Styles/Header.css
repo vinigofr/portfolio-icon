@@ -1,9 +1,13 @@
+header {
+  margin: 10px 10%;
+}
+
 .mainTitle:hover {
+  width: auto;
   transform: rotate(1deg) scale(1.1);
   transition: all 0.3s ease-in-out;
 }
 
 .mainTitle:not(:hover) {
-  /* transform: rotate(deg) scale(1); */
   transition: all 0.3s ease-in-out;
 }
