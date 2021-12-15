@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../Styles/FormInput.css';
+import '../../Styles/Button.css';
 import AppContext from '../../ContextAPI/AppContext';
 
 const FormInput = function () {
@@ -85,6 +86,7 @@ const FormInput = function () {
     <button
         type="button"
         onClick={() => sendParams()}
+        className="createIconButton"
       >
         Criar ícone
       </button>
