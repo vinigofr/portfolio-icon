@@ -13,28 +13,72 @@ const FormInput = function () {
     logoColor: '',
   });
 
+  const [filled, setFilled] = React.useState(false);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setInputParams({ ...inputParams, [name]: value });
   };
 
   const sendParams = () => {
-    setParams(inputParams);
-    setFirstTime(false);
-    setInputParams({ 
-    title: '',
-    backgColor: '',
-    icon: '',
-    logoColor: ''
-  })
+    if (
+      !inputParams.title     ||
+      !inputParams.backgColor||
+      !inputParams.icon      ||
+      !inputParams.logoColor) {
+      setFilled(true);
+      setTimeout(() => {
+        setFilled(false);
+      }, 3000);
+    } else {
+      setParams(inputParams);
+      setFirstTime(false);
+      setInputParams({ 
+      title: '',
+      backgColor: '',
+      icon: '',
+      logoColor: ''
+    });
+    }
   };
+
+  const style = { boxShadow: '0 0 1px 1px red' }
 
   return (
     <>
     <form onChange={ (e) => handleChange(e)} className="formInput">
+    <label className="inputLabel" htmlFor="icon">
+        <span className='inputTitle'>Ícone de exibição</span>
+        <input
+          { ...filled && !inputParams.icon ? { style } : null }
+          className="input" 
+          type="text" 
+          name="icon"
+          id="icon"
+          placeholder="Ex: google"
+          readOnly={false}
+          value={inputParams.icon}
+        />
+      </label>
+      
+      <label className="inputLabel" htmlFor="logoColor">
+        <span className='inputTitle'>Cor do ícone</span>
+      <input
+        { ...filled && !inputParams.logoColor ? { style } : null }
+        className="input" 
+        type="text" 
+        name="logoColor" 
+        id="logoColor"
+        placeholder="Cor em inglês ou hexadecimal (sem #)"
+        readOnly={false}
+        value={inputParams.logoColor}
+      />
+      </label>
+
       <label className="inputLabel" htmlFor="title">
         <span className='inputTitle'>Título</span>
         <input
+          { ...filled && !inputParams.title ? { style } : null }
           className="input"
           type="text" 
           name="title" 
@@ -49,42 +93,15 @@ const FormInput = function () {
       <label className="inputLabel" htmlFor="backgColor">
         <span className='inputTitle'>Cor de fundo</span>
         <input
+          { ...filled && !inputParams.backgColor ? { style } : null }
           className="input" 
           type="text" 
           name="backgColor" 
           id="backgColor"
           readOnly={false}
-          placeholder="Inglês ou hexadecimal(sem #)"
+          placeholder="Cor em inglês ou hexadecimal (sem #)"
           value={inputParams.backgColor}
         />
-      </label>
-      
-
-      <label className="inputLabel" htmlFor="icon">
-        <span className='inputTitle'>Ícone</span>
-        <input
-          className="input" 
-          type="text" 
-          name="icon"
-          id="icon"
-          placeholder="Ex: google"
-          readOnly={false}
-          value={inputParams.icon}
-        />
-      </label>
-      
-
-      <label className="inputLabel" htmlFor="logoColor">
-        <span className='inputTitle'>Cor do ícone</span>
-      <input
-        className="input" 
-        type="text" 
-        name="logoColor" 
-        id="logoColor"
-        placeholder="Inglês ou hexadecimal (sem #)"
-        readOnly={false}
-        value={inputParams.logoColor}
-      />
       </label>
     </form>
     <button
