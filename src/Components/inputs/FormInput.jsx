@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../Styles/FormInput.css';
+import '../../Styles/Button.css';
 import AppContext from '../../ContextAPI/AppContext';
 
 const FormInput = function () {
@@ -28,50 +30,67 @@ const FormInput = function () {
   };
 
   return (
-    <form onChange={ (e) => handleChange(e)}>
-      <label htmlFor="title">Título</label>
-      <input 
-        type="text" 
-        name="title" 
-        id="title"
-        readOnly={false}
-        value={inputParams.title}
-      />
+    <>
+    <form onChange={ (e) => handleChange(e)} className="formInput">
+      <label className="inputLabel" htmlFor="title">
+        <span className='inputTitle'>Título</span>
+        <input
+          className="input"
+          type="text" 
+          name="title" 
+          id="title"
+          readOnly={false}
+          value={inputParams.title}
+        />
+      </label>
+      
 
-      <label htmlFor="backgColor">Cor de fundo</label>
-      <input 
-        type="text" 
-        name="backgColor" 
-        id="backgColor"
-        readOnly={false}
-        value={inputParams.backgColor}
-      />
+      <label className="inputLabel" htmlFor="backgColor">
+        <span className='inputTitle'>Cor de fundo</span>
+        <input
+          className="input" 
+          type="text" 
+          name="backgColor" 
+          id="backgColor"
+          readOnly={false}
+          value={inputParams.backgColor}
+        />
+      </label>
+      
 
-      <label htmlFor="icon">Ícone</label>
-      <input 
-        type="text" 
-        name="icon"
-        id="icon"
-        readOnly={false}
-        value={inputParams.icon}
-      />
+      <label className="inputLabel" htmlFor="icon">
+        <span className='inputTitle'>Ícone</span>
+        <input
+          className="input" 
+          type="text" 
+          name="icon"
+          id="icon"
+          readOnly={false}
+          value={inputParams.icon}
+        />
+      </label>
+      
 
-      <label htmlFor="logoColor">Cor da logo</label>
-      <input 
+      <label className="inputLabel" htmlFor="logoColor">
+        <span className='inputTitle'>Cor da logo</span>
+      <input
+        className="input" 
         type="text" 
         name="logoColor" 
         id="logoColor"
         readOnly={false}
         value={inputParams.logoColor}
       />
-
-      <button
+      </label>
+    </form>
+    <button
         type="button"
         onClick={() => sendParams()}
+        className="createIconButton"
       >
         Criar ícone
       </button>
-    </form>
+    </>
   );
 };
 

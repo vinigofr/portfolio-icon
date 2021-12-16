@@ -1,0 +1,14 @@
+.accessIconButton {
+  display: block;
+  color: aliceblue;
+  text-align: center;
+  padding: 10px;
+  max-width: 50%;
+  max-height: 25px;
+  background-color: #4CAF50;;
+  border-radius: 5px;
+  margin: 10px auto;
+  text-decoration: none;
+  height: 50px;
+};
+
