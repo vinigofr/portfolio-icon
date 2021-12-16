@@ -8,7 +8,7 @@ function AccessLink() {
   const { params, firstTime } = React.useContext(AppContext);
   const readyURL = generateLink(params);
 
-  const message = <p className='iconMessage'>Ícone ainda não gerado</p>;
+  const message = <p className='iconMessage'>Link de ícone ainda não gerado</p>;
 
   return (
     firstTime ?

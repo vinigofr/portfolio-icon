@@ -39,6 +39,7 @@ const FormInput = function () {
           type="text" 
           name="title" 
           id="title"
+          placeholder="Ex: google"
           readOnly={false}
           value={inputParams.title}
         />
@@ -53,6 +54,7 @@ const FormInput = function () {
           name="backgColor" 
           id="backgColor"
           readOnly={false}
+          placeholder="Inglês ou hexadecimal(sem #)"
           value={inputParams.backgColor}
         />
       </label>
@@ -65,6 +67,7 @@ const FormInput = function () {
           type="text" 
           name="icon"
           id="icon"
+          placeholder="Ex: google"
           readOnly={false}
           value={inputParams.icon}
         />
@@ -72,12 +75,13 @@ const FormInput = function () {
       
 
       <label className="inputLabel" htmlFor="logoColor">
-        <span className='inputTitle'>Cor da logo</span>
+        <span className='inputTitle'>Cor do ícone</span>
       <input
         className="input" 
         type="text" 
         name="logoColor" 
         id="logoColor"
+        placeholder="Inglês ou hexadecimal (sem #)"
         readOnly={false}
         value={inputParams.logoColor}
       />
