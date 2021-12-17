@@ -3,6 +3,27 @@ import '../../Styles/FormInput.css';
 import '../../Styles/Button.css';
 import AppContext from '../../ContextAPI/AppContext';
 import IconInputs from '../IconInputs';
+import styled from 'styled-components';
+
+const ButtonOptions = styled.button`
+  background-color: #4CAF50;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 5px;
+  border: 1px solid #4CAF50;
+
+  &hover: {
+    background-color: rgb(255, 255, 255);
+    color: #4CAF50;
+  }
+`;
 
 const FormInput = function () {
   const { setParams, setFirstTime } =  React.useContext(AppContext);
@@ -60,7 +81,7 @@ const FormInput = function () {
     };
   };
 
-  const style = { boxShadow: '0 0 1px 1px red' }
+  const style = { boxShadow: '0 0 1px 1px red' };
 
   return (
     <>
@@ -91,18 +112,19 @@ const FormInput = function () {
           value={inputParams.backgColor}
         />
       </label>
-      { 
+      {
         editableIcon &&
         <IconInputs
           inputParams={ inputParams }
           setInputParams={ setInputParams }
+          emptyColor={ filled && !inputParams.icon ? { style } : null}
         />
       }
-      <button
+      <ButtonOptions
         type="button"
         onClick={ () => IconFormFunction() }>
-         {`${ editableIcon ? 'Desabilitar' : 'Habilitar' }`} ícones
-      </button>
+         {`${ editableIcon ? 'Desabilitar opção de' : 'Habilitar opção de' }`} ícones
+      </ButtonOptions>
     </form>
     <button
         type="button"

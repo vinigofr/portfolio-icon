@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const FormInput = styled.input`
   &:disabled {
     // background-color: #f5f5f5;
@@ -11,7 +10,7 @@ const FormInput = styled.input`
 `;
 
 function IconInputs(props) {
-  const { inputParams } = props;
+  const { inputParams, emptyColor } = props;
   const [disabledInput, setDisabledInput] = React.useState(true);
 
   const manageIconColorInput = async (e) => {
@@ -37,6 +36,7 @@ function IconInputs(props) {
           name="icon"
           id="icon"
           placeholder="Ex: google"
+          { ...emptyColor }
           value={inputParams.icon}
           autoComplete="off"
         />
@@ -47,7 +47,7 @@ function IconInputs(props) {
           Cor do ícone
         </span>
       <FormInput
-        className="input" 
+        className="input"
         type="text" 
         name="logoColor" 
         id="logoColor"
