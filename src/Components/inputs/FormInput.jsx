@@ -2,6 +2,7 @@ import React from 'react';
 import '../../Styles/FormInput.css';
 import '../../Styles/Button.css';
 import AppContext from '../../ContextAPI/AppContext';
+import IconInputs from '../IconInputs';
 
 const FormInput = function () {
   const { setParams, setFirstTime } =  React.useContext(AppContext);
@@ -14,18 +15,23 @@ const FormInput = function () {
   });
 
   const [filled, setFilled] = React.useState(false);
+  const [editableIcon, setEditableIcon] = React.useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setInputParams({ ...inputParams, [name]: value });
+    setInputParams({ ...inputParams, [name]: value });    
   };
+
+  const iconInput = inputParams.icon;
+  React.useEffect(() => {
+    if(iconInput === '') setInputParams({ ...inputParams, logoColor: '' });
+  } , [iconInput]);
 
   const sendParams = () => {
     if (
-      !inputParams.title     ||
-      !inputParams.backgColor||
-      !inputParams.icon      ||
-      !inputParams.logoColor) {
+      !inputParams.title      ||
+      !inputParams.backgColor ||
+      (!inputParams.icon && editableIcon)) {
       setFilled(true);
       setTimeout(() => {
         setFilled(false);
@@ -42,39 +48,23 @@ const FormInput = function () {
     }
   };
 
+  const IconFormFunction = () => {
+    setEditableIcon(!editableIcon);
+
+    if (!editableIcon) {
+      setInputParams({
+        ...inputParams,
+        icon: '',
+        logoColor: ''
+      });
+    };
+  };
+
   const style = { boxShadow: '0 0 1px 1px red' }
 
   return (
     <>
     <form onChange={ (e) => handleChange(e)} className="formInput">
-    <label className="inputLabel" htmlFor="icon">
-        <span className='inputTitle'>Ícone de exibição</span>
-        <input
-          { ...filled && !inputParams.icon ? { style } : null }
-          className="input" 
-          type="text" 
-          name="icon"
-          id="icon"
-          placeholder="Ex: google"
-          readOnly={false}
-          value={inputParams.icon}
-        />
-      </label>
-      
-      <label className="inputLabel" htmlFor="logoColor">
-        <span className='inputTitle'>Cor do ícone</span>
-      <input
-        { ...filled && !inputParams.logoColor ? { style } : null }
-        className="input" 
-        type="text" 
-        name="logoColor" 
-        id="logoColor"
-        placeholder="Cor em inglês ou hexadecimal (sem #)"
-        readOnly={false}
-        value={inputParams.logoColor}
-      />
-      </label>
-
       <label className="inputLabel" htmlFor="title">
         <span className='inputTitle'>Título</span>
         <input
@@ -88,8 +78,6 @@ const FormInput = function () {
           value={inputParams.title}
         />
       </label>
-      
-
       <label className="inputLabel" htmlFor="backgColor">
         <span className='inputTitle'>Cor de fundo</span>
         <input
@@ -103,6 +91,18 @@ const FormInput = function () {
           value={inputParams.backgColor}
         />
       </label>
+      { 
+        editableIcon &&
+        <IconInputs
+          inputParams={ inputParams }
+          setInputParams={ setInputParams }
+        />
+      }
+      <button
+        type="button"
+        onClick={ () => IconFormFunction() }>
+         {`${ editableIcon ? 'Desabilitar' : 'Habilitar' }`} ícones
+      </button>
     </form>
     <button
         type="button"
