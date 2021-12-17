@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 const FormInput = styled.input`
   &:disabled {
-    // background-color: #f5f5f5;
-    opacity: 0.5;
+    background-color: #ad8989;
+    opacity: 0.3;
     cursor: not-allowed;
+    color: #fff;
   }
 `;
 
@@ -16,7 +17,7 @@ function IconInputs(props) {
   const manageIconColorInput = async (e) => {
     const { value } = e.target;
 
-    if(value === '') {
+    if (value === '') {
       setDisabledInput(true);
     } else {
       setDisabledInput(false);
@@ -25,37 +26,37 @@ function IconInputs(props) {
 
   return (
     <>
-      <label className="inputLabel" htmlFor="icon">
+        <label className="inputLabel" htmlFor="icon" id="icon-field">
         <span className='inputTitle'>
           Ícone de exibição
         </span>
         <FormInput
           className="input"
-          onChange={ (e) => manageIconColorInput(e) }
-          type="text" 
+          onChange={(e) => manageIconColorInput(e)}
+          type="text"
           name="icon"
           id="icon"
           placeholder="Ex: google"
-          { ...emptyColor }
+          {...emptyColor}
           value={inputParams.icon}
           autoComplete="off"
         />
       </label>
-      
+
       <label className="inputLabel" htmlFor="logoColor">
         <span className='inputTitle'>
           Cor do ícone
         </span>
-      <FormInput
-        className="input"
-        type="text" 
-        name="logoColor" 
-        id="logoColor"
-        placeholder="Cor em inglês ou hexadecimal (sem #)"
-        value={inputParams.logoColor}
-        autoComplete="off"  
-        disabled={disabledInput}
-      />
+        <FormInput
+          className="input"
+          type="text"
+          name="logoColor"
+          id="logoColor"
+          placeholder="Cor em inglês ou hexadecimal (sem #)"
+          value={inputParams.logoColor}
+          autoComplete="off"
+          disabled={disabledInput}
+        />
       </label>
     </>
   );

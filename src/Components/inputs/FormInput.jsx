@@ -4,6 +4,7 @@ import '../../Styles/Button.css';
 import AppContext from '../../ContextAPI/AppContext';
 import IconInputs from '../IconInputs';
 import styled from 'styled-components';
+import { Transition } from 'react-transition-group';
 
 const ButtonOptions = styled.button`
   background-color: #4CAF50;
@@ -20,7 +21,6 @@ const ButtonOptions = styled.button`
   border: 1px solid #4CAF50;
 
   &:hover {
-      cursor: not-allowed;
       background-color: rgb(255, 255, 255);
       color: #4CAF50;
   }
@@ -46,7 +46,9 @@ const FormInput = function () {
 
   const iconInput = inputParams.icon;
   React.useEffect(() => {
-    if(iconInput === '') setInputParams({ ...inputParams, logoColor: '' });
+    if(iconInput === '') {
+      setInputParams({ ...inputParams, logoColor: '' });
+    }
   } , [iconInput]);
 
   const sendParams = () => {
@@ -84,6 +86,20 @@ const FormInput = function () {
 
   const style = { boxShadow: '0 0 1px 1px red' };
 
+  /** https://reactcommunity.org/react-transition-group/transition */
+  const defaultStyle = {
+    transition: `opacity ${200}ms ease-in-out`,
+    opacity: 0,
+  }
+  
+  const transitionStyles = {
+    entering: { opacity: 0.5 },
+    entered:  { opacity: 1 },
+    exiting:  { opacity: 0.5 },
+    exited:  { display: 'none' },
+  };
+  /** */
+
   return (
     <>
     <form onChange={ (e) => handleChange(e)} className="formInput">
@@ -113,14 +129,19 @@ const FormInput = function () {
           value={inputParams.backgColor}
         />
       </label>
-      {
-        editableIcon &&
-        <IconInputs
-          inputParams={ inputParams }
-          setInputParams={ setInputParams }
-          emptyColor={ filled && !inputParams.icon ? { style } : null}
-        />
-      }
+        <Transition in={editableIcon} timeout={200}>
+          {(state) => (
+            <div style={{ ...defaultStyle, ...transitionStyles[state]}}>
+              <IconInputs
+                state={state}
+                style={{backgroundColor: 'black'}}
+                inputParams={ inputParams }
+                setInputParams={ setInputParams }
+                emptyColor={ filled && !inputParams.icon ? { style } : null}
+              />
+            </div>
+          )}
+        </Transition>
       <ButtonOptions
         type="button"
         onClick={ () => IconFormFunction() }>
