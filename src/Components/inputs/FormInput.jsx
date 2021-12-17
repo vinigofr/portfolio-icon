@@ -19,9 +19,10 @@ const ButtonOptions = styled.button`
   border-radius: 5px;
   border: 1px solid #4CAF50;
 
-  &hover: {
-    background-color: rgb(255, 255, 255);
-    color: #4CAF50;
+  &:hover {
+      cursor: not-allowed;
+      background-color: rgb(255, 255, 255);
+      color: #4CAF50;
   }
 `;
 
