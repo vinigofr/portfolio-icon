@@ -10,8 +10,8 @@ function LinkAccess(props) {
     color: aliceblue;
     ${ copy ? 'font-weight: bold;' : '' }
     text-align: center;
-    max-width: 50%;
-    width: 100%;
+    font-size: 16px;
+    width: 220px;
     background-color: #4CAF50;;
     border-radius: 5px;
     margin: 10px auto;
@@ -39,14 +39,9 @@ function LinkAccess(props) {
 
   return (
     <Button
-      // as="a"
-      // href={readyURL}
-      target="_blank"
-      rel="noopener noreferrer"
-      data-clipboard-text={readyURL}
       onClick={ () => copyToClipBoard() }
     >
-      { copy ? 'Copiado!' : `Copiar link de ${title}` }
+      { copy ? 'Copiado! ✅' : `Copiar link de ${title}` }
     </Button>
     );
 }

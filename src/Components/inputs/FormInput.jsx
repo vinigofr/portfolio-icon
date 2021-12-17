@@ -10,15 +10,16 @@ const ButtonOptions = styled.button`
   background-color: #4CAF50;
   border: none;
   color: rgb(255, 255, 255);
-  padding: 15px 32px;
+  padding: 15px 0;
   text-align: center;
   font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   border-radius: 5px;
   border: 1px solid #4CAF50;
+  width: 220px;
+  // margin: 4px auto;
 
   &:hover {
       background-color: rgb(255, 255, 255);
@@ -142,19 +143,27 @@ const FormInput = function () {
             </div>
           )}
         </Transition>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          padding: '10px 0',
+
+        }}>
+
       <ButtonOptions
         type="button"
         onClick={ () => IconFormFunction() }>
          {`${ editableIcon ? 'Desabilitar opção de' : 'Habilitar opção de' }`} ícones
       </ButtonOptions>
-    </form>
-    <button
+      <button
         type="button"
         onClick={() => sendParams()}
         className="createIconButton"
       >
         Criar ícone
       </button>
+        </div>
+    </form>
     </>
   );
 };
