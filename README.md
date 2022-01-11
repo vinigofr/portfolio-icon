@@ -15,3 +15,5 @@ You can access this project in: https://vinigofr.github.io/portfolio-icon
 2. Access the folder: `cd portfolio-icon`
 3. Npm install: `npm i`
 4. Start the project: `npm start`
+
+# My thanks to <a href="https://www.linkedin.com/in/diogoaugusto" target="_blank"><h1>Diogo Augusto</h1></a> for helping me to make a intuitive interface.
